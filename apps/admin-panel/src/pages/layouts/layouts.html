@@ -7,118 +7,10 @@
         <!-- Bread Crumb -->
         <div class="breadcrumb-container position-relative d-none d-md-block" style="width: 250px;">
             <nav aria-label="breadcrumb" class="modern-breadcrumb">
-                <ol class="breadcrumb">
-                    <li class="breadcrumb-item">
-                        <a href="#" class="d-flex align-items-center">
-                            <span class="material-symbols-outlined">home</span>
-                            <span>Home</span>
-                        </a>
-                    </li>
-                </ol>
+                    <app-breadcrumb />
             </nav>
         </div>
-
-        <!-- Search Bar -->
-        <div class="search-container d-none d-md-block mx-auto">
-            <div class="position-relative">
-                <input type="text" class="form-control search-input" placeholder="Search...">
-                <span class="material-symbols-outlined search-icon">search</span>
-            </div>
-        </div>
-
         <div class="ms-auto d-flex align-items-center">
-            <!-- Language Selector -->
-            <div class="dropdown me-3 language-container">
-                <button class="btn btn-link p-0 language-btn" type="button" id="languageDropdown"
-                    data-bs-toggle="dropdown" aria-expanded="false">
-                    <img src="https://flagicons.lipis.dev/flags/4x3/tr.svg" alt="Türkçe" class="language-flag">
-                </button>
-                <ul class="dropdown-menu dropdown-menu-end shadow" aria-labelledby="languageDropdown">
-                    <li>
-                        <a class="dropdown-item small-text" href="#">
-                            <img src="https://flagicons.lipis.dev/flags/4x3/gb.svg" alt="English"
-                                class="language-flag me-2">
-                            English
-                        </a>
-                    </li>
-                    <li>
-                        <a class="dropdown-item small-text" href="#">
-                            <img src="https://flagicons.lipis.dev/flags/4x3/tr.svg" alt="Turkish"
-                                class="language-flag me-2">
-                            Turkish
-                        </a>
-                    </li>
-                    <li>
-                        <a class="dropdown-item small-text" href="#">
-                            <img src="https://flagicons.lipis.dev/flags/4x3/de.svg" alt="Deutsch"
-                                class="language-flag me-2">
-                            German
-                        </a>
-                    </li>
-                </ul>
-            </div>
-
-            <!-- Notification -->
-            <div class="dropdown me-3 notification-container">
-                <button class="btn btn-link p-0 notification-btn position-relative" type="button"
-                    id="notificationDropdown" data-bs-toggle="dropdown" aria-expanded="false">
-                    <span class="material-symbols-outlined">notifications</span>
-                    <span class="notification-badge">3</span>
-                </button>
-                <ul class="dropdown-menu dropdown-menu-end shadow notification-dropdown"
-                    aria-labelledby="notificationDropdown">
-                    <li class="dropdown-header">Notifications</li>
-                    <li>
-                        <hr class="dropdown-divider">
-                    </li>
-                    <li>
-                        <a class="dropdown-item notification-item" href="#">
-                            <div class="notification-icon bg-primary">
-                                <span class="material-symbols-outlined">description</span>
-                            </div>
-                            <div class="notification-content">
-                                <p class="notification-text">New invoice created</p>
-                                <p class="notification-time">10 minutes ago</p>
-                            </div>
-                        </a>
-                    </li>
-                    <li>
-                        <a class="dropdown-item notification-item" href="#">
-                            <div class="notification-icon bg-success">
-                                <span class="material-symbols-outlined">shopping_cart</span>
-                            </div>
-                            <div class="notification-content">
-                                <p class="notification-text">New order received</p>
-                                <p class="notification-time">1 hour ago</p>
-                            </div>
-                        </a>
-                    </li>
-                    <li>
-                        <a class="dropdown-item notification-item" href="#">
-                            <div class="notification-icon bg-warning">
-                                <span class="material-symbols-outlined">error</span>
-                            </div>
-                            <div class="notification-content">
-                                <p class="notification-text">Inventory alert</p>
-                                <p class="notification-time">2 hours ago</p>
-                            </div>
-                        </a>
-                    </li>
-                    <li>
-                        <hr class="dropdown-divider">
-                    </li>
-                    <li><a class="dropdown-item text-center view-all" href="#">View All</a></li>
-                </ul>
-            </div>
-
-            <!-- Theme Toggle Button -->
-            <div class="theme-toggle me-3">
-                <button class="btn btn-link p-0" id="themeToggle" title="Dark/Light Mode">
-                    <span class="material-symbols-outlined theme-icon-light">light_mode</span>
-                    <span class="material-symbols-outlined theme-icon-dark d-none">dark_mode</span>
-                </button>
-            </div>
-
             <!-- User Dropdown -->
             <div class="dropdown">
                 <a class="d-flex align-items-center text-decoration-none dropdown-toggle"
@@ -133,15 +25,11 @@
                     </div>
                 </a>
                 <ul class="dropdown-menu dropdown-menu-end shadow" aria-labelledby="userDropdown">
-                    <li><a class="dropdown-item small-text" href="#"><span
-                                class="material-symbols-outlined me-2">account_circle</span>Profile</a></li>
-                    <li><a class="dropdown-item small-text" href="#"><span
-                                class="material-symbols-outlined me-2">settings</span>Settings</a></li>
                     <li>
                         <hr class="dropdown-divider">
                     </li>
-                    <li><a class="dropdown-item small-text" href="#"><span
-                                class="material-symbols-outlined me-2">logout</span>Logout</a></li>
+                    <li><a class="dropdown-item small-text" routerLink="/login"><span
+                                class="material-symbols-outlined me-2">logout</span><span>Çıkış Yap</span></a></li>
                 </ul>
             </div>
         </div>
