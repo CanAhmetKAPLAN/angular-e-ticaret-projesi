@@ -1,4 +1,18 @@
-import { TestBed, ComponentFixture } from '@angular/core/testing';
+import { NgModule, provideZonelessChangeDetection } from '@angular/core';
+import { TestBed, ComponentFixture, getTestBed } from '@angular/core/testing';
+import {
+  BrowserTestingModule,
+  platformBrowserTesting,
+} from '@angular/platform-browser/testing';
+
+@NgModule({ providers: [provideZonelessChangeDetection()] })
+class ZonelessTestingModule {}
+
+getTestBed().initTestEnvironment(
+  [BrowserTestingModule, ZonelessTestingModule],
+  platformBrowserTesting(),
+  { teardown: { destroyAfterEach: true } },
+);
 import { ActivatedRoute, Router } from '@angular/router';
 import { of, throwError } from 'rxjs';
 import { ProductDetailComponent } from './product-detail.component';

@@ -1,4 +1,18 @@
-import { TestBed } from '@angular/core/testing';
+import { NgModule, provideZonelessChangeDetection } from '@angular/core';
+import { TestBed, getTestBed } from '@angular/core/testing';
+import {
+  BrowserTestingModule,
+  platformBrowserTesting,
+} from '@angular/platform-browser/testing';
+
+@NgModule({ providers: [provideZonelessChangeDetection()] })
+class ZonelessTestingModule {}
+
+getTestBed().initTestEnvironment(
+  [BrowserTestingModule, ZonelessTestingModule],
+  platformBrowserTesting(),
+  { teardown: { destroyAfterEach: true } },
+);
 import { provideHttpClient } from '@angular/common/http';
 import {
   provideHttpClientTesting,
