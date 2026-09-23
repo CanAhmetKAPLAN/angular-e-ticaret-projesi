@@ -1,6 +1,6 @@
 import { Component, computed, signal, ViewEncapsulation } from '@angular/core';
 import Breadcrumb from './breadcrumb';
-import { RouterLink, RouterLinkActive } from '@angular/router';
+import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { navigations } from '../../navigation';
 import { NavPipe } from '../../pipes/nav-pipe';
@@ -15,6 +15,7 @@ import { DatePipe } from '@angular/common';
     NavPipe,
     FormsModule,
     DatePipe,
+    RouterOutlet,
   ],
   templateUrl: './layouts.html',
 })
