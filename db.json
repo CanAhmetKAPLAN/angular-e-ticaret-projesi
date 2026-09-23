@@ -1,3 +1,14 @@
 {
-    "Products": []
+    "products": [
+        {
+            "id": "",
+            "imageUrl":
+              "https://cdn.dsmcdn.com/mnresize/400/-/ty1000446/product/media/images/prod/PIM/20260911/12/481767d3-f797-414f-be74-7d3647c196c9/1_org_zoom.jpg",
+            "name": "Iphone 18",
+            "price": "137999",
+            "stock": "15",
+            "categoryId": "",
+            "categoryName": "Telefon"
+          }
+    ]
 }

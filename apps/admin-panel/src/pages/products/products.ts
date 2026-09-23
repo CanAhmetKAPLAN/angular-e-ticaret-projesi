@@ -1,13 +1,16 @@
-import { Component, signal, ViewEncapsulation } from '@angular/core';
+import { Component, computed, signal, ViewEncapsulation } from '@angular/core';
 import Blank from '../../components/blank';
-import { FlexiGridModule } from 'flexi-grid';
+import { FlexiGridFilterDataModel, FlexiGridModule } from 'flexi-grid';
+import { httpResource } from '@angular/common/http';
 
 export interface ProductModel {
-  id?: string;
+  id: string;
   name: string;
   imageUrl: string;
   price: number;
   stock: number;
+  categoryId: string;
+  categoryName: string;
 }
 
 @Component({
@@ -16,13 +19,16 @@ export interface ProductModel {
   templateUrl: './products.html',
 })
 export default class Products {
-  readonly data = signal<ProductModel[]>([
+  readonly result = httpResource<ProductModel[]>(
+    () => 'http://localhost:3000/products',
+  );
+  readonly data = computed(() => this.result.value() ?? []);
+  readonly loading = computed(() => this.result.isLoading());
+
+  readonly categoryFilter = signal<FlexiGridFilterDataModel[]>([
     {
-      imageUrl:
-        'https://cdn.dsmcdn.com/mnresize/400/-/ty1000446/product/media/images/prod/PIM/20260911/12/481767d3-f797-414f-be74-7d3647c196c9/1_org_zoom.jpg',
-      name: 'Iphone 18',
-      price: 137999,
-      stock: 15,
+      name: 'Telefon',
+      value: 'Telefon',
     },
   ]);
 }
