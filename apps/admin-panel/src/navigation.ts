@@ -10,4 +10,9 @@ export const navigations: NavigationModel[] = [
     url: '/',
     icon: 'Home',
   },
+  {
+    title: 'Ürünler',
+    url: '/products',
+    icon: 'package_2',
+  },
 ];
