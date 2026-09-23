@@ -4,11 +4,15 @@ import {
   ViewEncapsulation,
 } from '@angular/core';
 import { RouterModule } from '@angular/router';
+import AppToast from './components/toast';
 
 @Component({
-  imports: [RouterModule],
+  imports: [RouterModule, AppToast],
   selector: 'app-root',
-  template: `<router-outlet />`,
+  template: `
+    <router-outlet />
+    <app-toast />
+  `,
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })

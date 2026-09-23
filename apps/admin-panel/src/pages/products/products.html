@@ -25,6 +25,6 @@ fontSize="15px" [loading]="loading()" (onRefresh)="result.reload()" exportExcelF
 
     <ng-template flexiGridColumnCommandTemplate let-item >
         <flexi-button btnIcon="edit" btnColor="info" title="Güncelle" btnSize="small" flexiTooltip />
-        <flexi-button btnIcon="delete" btnColor="danger" title="Sil" btnSize="small" flexiTooltip />
+        <flexi-button btnIcon="delete" btnColor="danger" title="Sil" btnSize="small" flexiTooltip (click)="delete(item.id)" />
     </ng-template>
 </flexi-grid>
