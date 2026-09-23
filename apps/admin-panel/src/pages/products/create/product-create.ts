@@ -5,10 +5,11 @@ import { FormsModule, NgForm } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { Location } from '@angular/common';
 import { Toast } from '../../../services/toast';
+import { NgxMaskDirective } from 'ngx-mask';
 
 @Component({
   encapsulation: ViewEncapsulation.None,
-  imports: [Blank, RouterLink, FormsModule],
+  imports: [Blank, RouterLink, FormsModule, NgxMaskDirective],
   templateUrl: './product-create.html',
 })
 export default class ProductCreate {

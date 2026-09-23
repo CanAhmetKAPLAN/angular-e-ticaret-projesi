@@ -16,6 +16,7 @@
     "@angular/ssr": "22.1.6",
     "express": "^4.21.2",
     "flexi-grid": "^22.0.0",
+    "ngx-mask": "^22.2.1",
     "rxjs": "~7.8.0"
   },
   "devDependencies": {
