@@ -2,6 +2,7 @@ import { Component, computed, signal, ViewEncapsulation } from '@angular/core';
 import Blank from '../../components/blank';
 import { FlexiGridFilterDataModel, FlexiGridModule } from 'flexi-grid';
 import { httpResource } from '@angular/common/http';
+import { RouterLink } from '@angular/router';
 
 export interface ProductModel {
   id: string;
@@ -15,7 +16,7 @@ export interface ProductModel {
 
 @Component({
   encapsulation: ViewEncapsulation.None,
-  imports: [Blank, FlexiGridModule],
+  imports: [Blank, FlexiGridModule, RouterLink],
   templateUrl: './products.html',
 })
 export default class Products {
