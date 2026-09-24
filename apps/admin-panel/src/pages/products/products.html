@@ -24,7 +24,7 @@ fontSize="15px" [loading]="loading()" (onRefresh)="result.reload()" exportExcelF
     <flexi-grid-column field="stock" title="Stok Adedi" filterType="number" textAlign="right" />
 
     <ng-template flexiGridColumnCommandTemplate let-item >
-        <flexi-button btnIcon="edit" btnColor="info" title="Güncelle" btnSize="small" flexiTooltip />
+        <flexi-button routerLink="/products/edit/{{item.id}}" btnIcon="edit" btnColor="info" title="Güncelle" btnSize="small" flexiTooltip />
         <flexi-button btnIcon="delete" btnColor="danger" title="Sil" btnSize="small" flexiTooltip (click)="delete(item.id)" />
     </ng-template>
 </flexi-grid>

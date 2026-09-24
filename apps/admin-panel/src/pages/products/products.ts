@@ -1,4 +1,10 @@
-import { Component, computed, inject, signal, ViewEncapsulation } from '@angular/core';
+import {
+  Component,
+  computed,
+  inject,
+  signal,
+  ViewEncapsulation,
+} from '@angular/core';
 import Blank from '../../components/blank';
 import { FlexiGridFilterDataModel, FlexiGridModule } from 'flexi-grid';
 import { httpResource, HttpClient } from '@angular/common/http';
@@ -14,6 +20,16 @@ export interface ProductModel {
   categoryId: string;
   categoryName: string;
 }
+
+export const initialProduct: ProductModel = {
+  id: '',
+  name: '',
+  imageUrl: '',
+  price: 0,
+  stock: 0,
+  categoryId: '123',
+  categoryName: 'Telefon',
+};
 
 @Component({
   encapsulation: ViewEncapsulation.None,
@@ -38,11 +54,18 @@ export default class Products {
   ]);
 
   delete(id: string) {
-    this.#toast.showSwal('Ürünü Sil?', 'Ürünü silmek istiyor musunuz?', 'Sil', () => {
-      this.#http.delete(`http://localhost:3000/products/${id}`).subscribe(() => {
-        this.#toast.show('Başarılı', 'Ürün başarıyla silindi', 'success');
-        this.result.reload();
-      });
-    });
+    this.#toast.showSwal(
+      'Ürünü Sil?',
+      'Ürünü silmek istiyor musunuz?',
+      'Sil',
+      () => {
+        this.#http
+          .delete(`http://localhost:3000/products/${id}`)
+          .subscribe(() => {
+            this.#toast.show('Başarılı', 'Ürün başarıyla silindi', 'success');
+            this.result.reload();
+          });
+      },
+    );
   }
 }

@@ -1,20 +1,22 @@
 {
   "products": [
     {
-      "id": "",
+      "id": "1",
       "imageUrl": "https://cdn.dsmcdn.com/mnresize/400/-/ty1000446/product/media/images/prod/PIM/20260911/12/481767d3-f797-414f-be74-7d3647c196c9/1_org_zoom.jpg",
       "name": "Iphone 18",
-      "price": "137999",
+      "price": 137999,
       "stock": "15",
       "categoryId": "",
       "categoryName": "Telefon"
     },
     {
-      "name": "domates",
-      "imageUrl": "domatesresmi",
-      "price": "30",
-      "stock": "300",
-      "id": "MGLEGxOmOLk"
+      "id": "kKt86MRi8uE",
+      "name": "Philips Airfryer L, Yağsız Sıcak Hava Fritözü, 4,1 L, 1400 W, 7 Programlı Dijital Ekran",
+      "imageUrl": "https://cdn.dsmcdn.com/mnresize/420/620/ty452/product/media/images/20220610/9/123628812/497569361/1/1_org_zoom.jpg",
+      "price": 8350,
+      "stock": "20",
+      "categoryId": "123",
+      "categoryName": "Telefon"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"

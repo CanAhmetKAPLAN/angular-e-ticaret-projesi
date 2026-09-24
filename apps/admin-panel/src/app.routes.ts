@@ -21,6 +21,10 @@ export const appRoutes: Route[] = [
         path: 'products/create',
         loadComponent: () => import('./pages/products/create/product-create'),
       },
+      {
+        path: 'products/edit/:id',
+        loadComponent: () => import('./pages/products/create/product-create'),
+      },
     ],
   },
 ];
