@@ -15,4 +15,9 @@ export const navigations: NavigationModel[] = [
     url: '/products',
     icon: 'package_2',
   },
+  {
+    title: 'Kategoriler',
+    url: '/categories',
+    icon: 'category_search',
+  },
 ];

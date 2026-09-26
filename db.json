@@ -16,8 +16,9 @@
       "price": 8350,
       "stock": "20",
       "categoryId": "123",
-      "categoryName": "Telefon"
+      "categoryName": "Mutfak Ev Aletleri"
     }
   ],
+  "categories": [],
   "$schema": "./node_modules/json-server/schema.json"
 }
