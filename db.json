@@ -6,7 +6,7 @@
       "name": "Iphone 18",
       "price": 137999,
       "stock": "15",
-      "categoryId": "",
+      "categoryId": "zgA5C0O8usg",
       "categoryName": "Telefon"
     },
     {
@@ -15,7 +15,25 @@
       "imageUrl": "https://cdn.dsmcdn.com/mnresize/420/620/ty452/product/media/images/20220610/9/123628812/497569361/1/1_org_zoom.jpg",
       "price": 8350,
       "stock": "20",
-      "categoryId": "123",
+      "categoryId": "ZPqw73Z_miU",
+      "categoryName": "Mutfak Ev Aletleri"
+    },
+    {
+      "id": "4rOM1lEsT58",
+      "name": "Samsung Galaxy S26",
+      "imageUrl": "https://encrypted-tbn2.gstatic.com/shopping?q=tbn:ANd9GcQBrADTMo-vTk2p17WmpXpxC5XiBsLFIFTf2Lq8szBcXO5I8h_OwW1UfYh999xB6DdDAPiGaKnJl8tE6FaVAiNh1eZiN3NSHQ",
+      "price": 67499,
+      "stock": "7",
+      "categoryId": "zgA5C0O8usg",
+      "categoryName": "Telefon"
+    },
+    {
+      "id": "0fxmhJDyxnU",
+      "name": "Arçelik FRA 6464 X GurmeFry XL Az Yağlı Fritöz",
+      "imageUrl": "https://encrypted-tbn3.gstatic.com/shopping?q=tbn:ANd9GcQ7Kcte-BQBVbSSrnYbd6wWzL6nfsJ1UhQzKuDw27ryOYhI-TDAE6UyLa6rgSXxOFVi8OaOj5eG-abeWPz5iNPd18KjbOErus0WROLzdzaHJcvVQg2Q0EtcOn8",
+      "price": 6999,
+      "stock": "6",
+      "categoryId": "ZPqw73Z_miU",
       "categoryName": "Mutfak Ev Aletleri"
     }
   ],

@@ -2,6 +2,7 @@ import {
   Component,
   computed,
   inject,
+  linkedSignal,
   resource,
   signal,
   ViewEncapsulation,
@@ -9,16 +10,24 @@ import {
 import Blank from '../../../components/blank';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { FormsModule, NgForm } from '@angular/forms';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, httpResource } from '@angular/common/http';
 import { Location } from '@angular/common';
 import { Toast } from '../../../services/toast';
 import { NgxMaskDirective } from 'ngx-mask';
 import { lastValueFrom } from 'rxjs';
 import { initialProduct, ProductModel } from '../products';
+import { CategoryModel } from '../../categories/categories';
+import { FlexiSelectModule } from 'flexi-select';
 
 @Component({
   encapsulation: ViewEncapsulation.None,
-  imports: [Blank, RouterLink, FormsModule, NgxMaskDirective],
+  imports: [
+    Blank,
+    RouterLink,
+    FormsModule,
+    NgxMaskDirective,
+    FlexiSelectModule,
+  ],
   templateUrl: './product-create.html',
 })
 export default class ProductCreate {
@@ -38,7 +47,15 @@ export default class ProductCreate {
     this.id() ? 'Ürün Güncelle' : 'Ürün Ekle',
   );
   readonly btnName = computed(() => (this.id() ? 'Güncelle' : 'Kaydet'));
-  readonly data = computed(() => this.result.value() ?? { ...initialProduct });
+  readonly data = linkedSignal(
+    () => this.result.value() ?? { ...initialProduct },
+  );
+
+  readonly categoryResult = httpResource<CategoryModel[]>(
+    () => 'api/categories',
+  );
+  readonly categories = computed(() => this.categoryResult.value() ?? []);
+  readonly categoryLoading = computed(() => this.categoryResult.isLoading());
 
   readonly #http = inject(HttpClient);
   readonly #location = inject(Location);
@@ -61,12 +78,18 @@ export default class ProductCreate {
         this.#location.back();
       });
     } else {
-      this.#http
-        .put(`api/products/${this.id()}`, this.data())
-        .subscribe(() => {
-          this.#toast.show('Başarılı', 'Ürün başarıyla güncellendi', 'info');
-          this.#location.back();
-        });
+      this.#http.put(`api/products/${this.id()}`, this.data()).subscribe(() => {
+        this.#toast.show('Başarılı', 'Ürün başarıyla güncellendi', 'info');
+        this.#location.back();
+      });
     }
+  }
+  setCategoryName() {
+    const id = this.data().categoryId;
+    const category = this.categories().find((p) => p.id == id);
+    this.data.update((prev) => ({
+      ...prev,
+      categoryName: category?.name ?? '',
+    }));
   }
 }
