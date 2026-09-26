@@ -40,9 +40,7 @@ export default class Products {
   readonly #http = inject(HttpClient);
   readonly #toast = inject(Toast);
 
-  readonly result = httpResource<ProductModel[]>(
-    () => 'http://localhost:3000/products',
-  );
+  readonly result = httpResource<ProductModel[]>(() => `api/products`);
   readonly data = computed(() => this.result.value() ?? []);
   readonly loading = computed(() => this.result.isLoading());
 
@@ -59,12 +57,10 @@ export default class Products {
       'Ürünü silmek istiyor musunuz?',
       'Sil',
       () => {
-        this.#http
-          .delete(`http://localhost:3000/products/${id}`)
-          .subscribe(() => {
-            this.#toast.show('Başarılı', 'Ürün başarıyla silindi', 'success');
-            this.result.reload();
-          });
+        this.#http.delete(`api/products/${id}`).subscribe(() => {
+          this.#toast.show('Başarılı', 'Ürün başarıyla silindi', 'success');
+          this.result.reload();
+        });
       },
     );
   }

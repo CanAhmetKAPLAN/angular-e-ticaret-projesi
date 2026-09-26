@@ -35,9 +35,7 @@ export default class CreateCategory {
     params: () => this.id(),
     loader: async () => {
       const res = await lastValueFrom(
-        this.#http.get<CategoryModel>(
-          `http://localhost:3000/categories/${this.id()}`,
-        ),
+        this.#http.get<CategoryModel>(`api/categories/${this.id()}`),
       );
       return res;
     },
@@ -54,19 +52,17 @@ export default class CreateCategory {
   save(form: NgForm) {
     if (!form.valid) return;
     if (!this.id()) {
-      this.#http
-        .post('http://localhost:3000/categories', this.data())
-        .subscribe((res) => {
-          this.#toast.show(
-            'Başarılı',
-            'Kategori kaydı başarıyla tamamlandı',
-            'success',
-          );
-          this.#router.navigateByUrl('/categories');
-        });
+      this.#http.post(`api/categories`, this.data()).subscribe((res) => {
+        this.#toast.show(
+          'Başarılı',
+          'Kategori kaydı başarıyla tamamlandı',
+          'success',
+        );
+        this.#router.navigateByUrl('/categories');
+      });
     } else {
       this.#http
-        .put(`http://localhost:3000/categories/${this.id()}`, this.data())
+        .put(`api/categories/${this.id()}`, this.data())
         .subscribe((res) => {
           this.#toast.show(
             'Başarılı',

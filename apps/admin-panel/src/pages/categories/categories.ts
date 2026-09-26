@@ -21,9 +21,7 @@ export const initialCategory: CategoryModel = {
   templateUrl: './categories.html',
 })
 export default class Categories {
-  readonly result = httpResource<CategoryModel[]>(
-    () => 'http://localhost:3000/categories',
-  );
+  readonly result = httpResource<CategoryModel[]>(() => `api/categories`);
   readonly data = computed(() => this.result.value() ?? []);
   readonly isLoading = computed(() => this.result.isLoading());
 
@@ -36,7 +34,7 @@ export default class Categories {
       'Kategoriyi silmek istiyor musunuz ?',
       'Sil',
       () => {
-        this.#http.delete(`http://localhost:3000/${id}`).subscribe(() => {
+        this.#http.delete(`api/${id}`).subscribe(() => {
           this.result.reload();
         });
       },

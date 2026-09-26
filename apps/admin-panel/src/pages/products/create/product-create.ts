@@ -28,9 +28,7 @@ export default class ProductCreate {
     params: () => this.id(),
     loader: async ({ params }) => {
       const res = await lastValueFrom(
-        this.#http.get<ProductModel>(
-          `http://localhost:3000/products/${params}`,
-        ),
+        this.#http.get<ProductModel>(`api/products/${params}`),
       );
       return res;
     },
@@ -58,15 +56,13 @@ export default class ProductCreate {
   save(form: NgForm) {
     if (!form.valid) return;
     if (!this.id()) {
-      this.#http
-        .post('http://localhost:3000/products', this.data())
-        .subscribe(() => {
-          this.#toast.show('Başarılı', 'Ürün başarıyla eklendi', 'success');
-          this.#location.back();
-        });
+      this.#http.post(`api/products`, this.data()).subscribe(() => {
+        this.#toast.show('Başarılı', 'Ürün başarıyla eklendi', 'success');
+        this.#location.back();
+      });
     } else {
       this.#http
-        .put(`http://localhost:3000/products/${this.id()}`, this.data())
+        .put(`api/products/${this.id()}`, this.data())
         .subscribe(() => {
           this.#toast.show('Başarılı', 'Ürün başarıyla güncellendi', 'info');
           this.#location.back();
