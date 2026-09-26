@@ -28,8 +28,10 @@ export default class ProductCreate {
   readonly result = resource({
     params: () => this.id(),
     loader: async ({ params }) => {
-      var res = await lastValueFrom(
-        this.#http.get<ProductModel>(`http://localhost:3000/products/${params}`),
+      const res = await lastValueFrom(
+        this.#http.get<ProductModel>(
+          `http://localhost:3000/products/${params}`,
+        ),
       );
       return res;
     },
