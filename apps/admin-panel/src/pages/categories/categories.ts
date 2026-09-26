@@ -10,6 +10,11 @@ export interface CategoryModel {
   name: string;
 }
 
+export const initialCategory: CategoryModel = {
+  id: '',
+  name: '',
+};
+
 @Component({
   encapsulation: ViewEncapsulation.None,
   imports: [Blank, FlexiGridModule, RouterLink],

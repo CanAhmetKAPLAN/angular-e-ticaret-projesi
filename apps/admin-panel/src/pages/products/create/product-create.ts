@@ -2,7 +2,6 @@ import {
   Component,
   computed,
   inject,
-  linkedSignal,
   resource,
   signal,
   ViewEncapsulation,
@@ -41,7 +40,7 @@ export default class ProductCreate {
     this.id() ? 'Ürün Güncelle' : 'Ürün Ekle',
   );
   readonly btnName = computed(() => (this.id() ? 'Güncelle' : 'Kaydet'));
-  readonly data = linkedSignal(() => this.result.value() ?? initialProduct);
+  readonly data = computed(() => this.result.value() ?? { ...initialProduct });
 
   readonly #http = inject(HttpClient);
   readonly #location = inject(Location);

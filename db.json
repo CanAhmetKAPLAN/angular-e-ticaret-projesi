@@ -19,6 +19,15 @@
       "categoryName": "Mutfak Ev Aletleri"
     }
   ],
-  "categories": [],
+  "categories": [
+    {
+      "id": "zgA5C0O8usg",
+      "name": "Telefon"
+    },
+    {
+      "id": "ZPqw73Z_miU",
+      "name": "Mutfak Ev Aletleri"
+    }
+  ],
   "$schema": "./node_modules/json-server/schema.json"
 }
