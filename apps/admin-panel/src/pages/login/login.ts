@@ -22,6 +22,9 @@ export default class Login {
       if (res.length === 0) {
         this.#toast.show('Hata', 'Kullanıcı adı veya şifre yanlış', 'error');
         return;
+      } else if (!res[0].isAdmin) {
+        this.#toast.show('Hata', 'Giriş yapma yetkiniz yok', 'error');
+        return;
       }
 
       localStorage.setItem('response', JSON.stringify(res[0]));
