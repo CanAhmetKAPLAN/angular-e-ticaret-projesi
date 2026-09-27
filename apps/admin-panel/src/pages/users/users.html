@@ -31,12 +31,13 @@ exportExcelFileName="Kullanıcılar"
           <div class="d-flex justify-content-center" >
             <div class="form-check form-switch">
               <input
+                [checked]="item.isAdmin"
+                (change)="changeIsAdmin(item)"
                 class="form-check-input"
                 type="checkbox"
                 role="switch"
                 [id]="item.id"
-                [name]="item.id"
-                checked>
+                [name]="item.id">
             </div>
           </div>
         </ng-template>

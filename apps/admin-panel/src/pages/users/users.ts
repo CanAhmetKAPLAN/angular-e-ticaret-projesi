@@ -51,4 +51,10 @@ export default class Users {
       },
     );
   }
+  changeIsAdmin(data: UserModel) {
+    const updated: UserModel = { ...data, isAdmin: !data.isAdmin };
+    this.#http.put(`api/users/${updated.id}`, updated).subscribe(() => {
+      this.result.reload();
+    });
+  }
 }
