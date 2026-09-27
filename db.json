@@ -55,7 +55,7 @@
       "userName": "cankaplan",
       "email": "cakaplan06@gmail.com",
       "password": "can123",
-      "isAdmin": false,
+      "isAdmin": true,
       "id": "burGWSEveac"
     }
   ],
