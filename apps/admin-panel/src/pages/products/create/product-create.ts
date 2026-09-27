@@ -18,6 +18,7 @@ import { lastValueFrom } from 'rxjs';
 import { initialProduct, ProductModel } from '../products';
 import { CategoryModel } from '../../categories/categories';
 import { FlexiSelectModule } from 'flexi-select';
+import { BreadcrumbModel } from '../../layouts/breadcrumb';
 
 @Component({
   encapsulation: ViewEncapsulation.None,
@@ -32,6 +33,9 @@ import { FlexiSelectModule } from 'flexi-select';
 })
 export default class ProductCreate {
   readonly id = signal<string | undefined>(undefined);
+  readonly breadcrumbs = signal<BreadcrumbModel[]>([
+    { title: 'Ürünler', url: '/products', icon: 'package_2' },
+  ]);
 
   readonly result = resource({
     params: () => this.id(),
@@ -39,6 +43,10 @@ export default class ProductCreate {
       const res = await lastValueFrom(
         this.#http.get<ProductModel>(`api/products/${params}`),
       );
+      this.breadcrumbs.update((prev) => [
+        ...prev,
+        { title: res.name, url: `/products/edit/${this.id()}`, icon: 'edit' },
+      ]);
       return res;
     },
   });
@@ -66,6 +74,11 @@ export default class ProductCreate {
     this.#activated.params.subscribe((res) => {
       if (res['id']) {
         this.id.set(res['id']);
+      } else {
+        this.breadcrumbs.update((prev) => [
+          ...prev,
+          { title: 'Ekle', url: '/products/create', icon: 'add' },
+        ]);
       }
     });
   }

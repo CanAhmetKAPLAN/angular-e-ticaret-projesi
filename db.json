@@ -47,6 +47,17 @@
       "name": "Mutfak Ev Aletleri"
     }
   ],
-  "users": [],
+  "users": [
+    {
+      "firstName": "Can Ahmet",
+      "lastName": "KAPLAN",
+      "fullName": "Can Ahmet KAPLAN",
+      "userName": "cankaplan",
+      "email": "cakaplan06@gmail.com",
+      "password": "can123",
+      "isAdmin": false,
+      "id": "burGWSEveac"
+    }
+  ],
   "$schema": "./node_modules/json-server/schema.json"
 }

@@ -14,6 +14,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { Toast } from '../../../services/toast';
 import { lastValueFrom } from 'rxjs';
+import { BreadcrumbModel } from '../../layouts/breadcrumb';
 
 @Component({
   encapsulation: ViewEncapsulation.None,
@@ -22,9 +23,12 @@ import { lastValueFrom } from 'rxjs';
 })
 export default class CreateCategory {
   readonly id = signal<string | undefined>(undefined);
+  readonly breadcrumbs = signal<BreadcrumbModel[]>([
+    { title: 'Kategoriler', url: '/categories', icon: 'category_search' },
+  ]);
   readonly data = computed(() => this.result.value() ?? { ...initialCategory });
   readonly btnName = computed(() => (this.id() ? 'Güncelle' : 'Kaydet'));
-  readonly cardTitle = computed(() =>
+  readonly Title = computed(() =>
     this.id() ? 'Kategori Güncelle' : 'Kategori Ekle',
   );
   readonly #activated = inject(ActivatedRoute);
@@ -37,6 +41,10 @@ export default class CreateCategory {
       const res = await lastValueFrom(
         this.#http.get<CategoryModel>(`api/categories/${this.id()}`),
       );
+      this.breadcrumbs.update((prev) => [
+        ...prev,
+        { title: res.name, url: `/categories/edit${this.id()}`, icon: 'edit' },
+      ]);
       return res;
     },
   });
@@ -45,6 +53,11 @@ export default class CreateCategory {
     this.#activated.params.subscribe((res) => {
       if (res['id']) {
         this.id.set(res['id']);
+      } else {
+        this.breadcrumbs.update((prev) => [
+          ...prev,
+          { title: 'Ekle', url: '/categories/create', icon: 'add' },
+        ]);
       }
     });
   }
