@@ -11,13 +11,18 @@ export const navigations: NavigationModel[] = [
     icon: 'Home',
   },
   {
+    title: 'Kategoriler',
+    url: '/categories',
+    icon: 'category_search',
+  },
+  {
     title: 'Ürünler',
     url: '/products',
     icon: 'package_2',
   },
   {
-    title: 'Kategoriler',
-    url: '/categories',
-    icon: 'category_search',
+    title: 'Kullanıcılar',
+    url: '/users',
+    icon: 'group',
   },
 ];
