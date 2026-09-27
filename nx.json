@@ -93,7 +93,7 @@
     },
     "@nx/angular:library": {
       "linter": "eslint",
-      "unitTestRunner": "vitest-analog"
+      "unitTestRunner": "none"
     },
     "@nx/angular:component": {
       "style": "css"
@@ -114,13 +114,6 @@
     },
     "@schematics/angular:directive": {
       "skipTests": true
-    },
-    "@nx/angular:library": {
-      "linter": "eslint",
-      "unitTestRunner": "none"
-    },
-    "@nx/angular:component": {
-      "style": "css"
     }
   },
   "analytics": false
