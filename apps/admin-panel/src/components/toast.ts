@@ -13,9 +13,15 @@ const VARIANT_CLASS: Record<ToastType, string> = {
   encapsulation: ViewEncapsulation.None,
   imports: [],
   template: `
-    <div class="toast-container position-fixed bottom-0 end-0 p-3" style="z-index: 1080;">
+    <div
+      class="toast-container position-fixed bottom-0 end-0 p-3"
+      style="z-index: 1080;"
+    >
       @for (t of toast.toasts(); track t.id) {
-        <div class="toast show border-0 {{ variantClass(t.type) }}" role="alert">
+        <div
+          class="toast show border-0 {{ variantClass(t.type) }}"
+          role="alert"
+        >
           <div class="d-flex">
             <div class="toast-body">
               <strong>{{ t.title }}</strong>
@@ -24,6 +30,7 @@ const VARIANT_CLASS: Record<ToastType, string> = {
             <button
               type="button"
               class="btn-close btn-close-white me-2 m-auto"
+              aria-label="Kapat"
               (click)="toast.dismiss(t.id)"
             ></button>
           </div>
@@ -43,10 +50,18 @@ const VARIANT_CLASS: Record<ToastType, string> = {
               <p class="mb-0">{{ s.question }}</p>
             </div>
             <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" (click)="toast.cancelSwal()">
+              <button
+                type="button"
+                class="btn btn-secondary"
+                (click)="toast.cancelSwal()"
+              >
                 {{ s.cancelBtnText }}
               </button>
-              <button type="button" class="btn btn-danger" (click)="toast.confirmSwal()">
+              <button
+                type="button"
+                class="btn btn-danger"
+                (click)="toast.confirmSwal()"
+              >
                 {{ s.confirmBtnText }}
               </button>
             </div>

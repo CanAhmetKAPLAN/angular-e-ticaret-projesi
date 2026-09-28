@@ -1,8 +1,8 @@
-import { inject, Service } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
 import { Toast } from './toast';
 import { HttpErrorResponse } from '@angular/common/http';
 
-@Service()
+@Injectable({ providedIn: 'root' })
 export class Error {
   readonly #toast = inject(Toast);
 

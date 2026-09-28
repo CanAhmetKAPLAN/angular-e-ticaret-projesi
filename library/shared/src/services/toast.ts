@@ -1,4 +1,4 @@
-import { Service, signal } from '@angular/core';
+import { Injectable, signal } from '@angular/core';
 
 export type ToastType = 'success' | 'error' | 'info' | 'warning';
 
@@ -18,7 +18,7 @@ export interface SwalModel {
   onCancel?: () => void;
 }
 
-@Service()
+@Injectable({ providedIn: 'root' })
 export class Toast {
   readonly toasts = signal<ToastModel[]>([]);
   readonly swal = signal<SwalModel | null>(null);
