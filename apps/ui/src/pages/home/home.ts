@@ -18,12 +18,15 @@ import { InfiniteScrollDirective } from 'ngx-infinite-scroll';
 })
 export default class Home {
   readonly limit = signal<number>(6);
-  readonly start = signal<number>(0);
-  readonly result = httpResource<ProductModel[]>(() => {
-    const endpoint = `${api}/products?_limit=${this.limit()}&_start=${this.start()}`;
-    return endpoint;
-  });
-  readonly data = computed(() => this.result.value() ?? []);
+  readonly page = signal<number>(1);
+  readonly result = httpResource<{ data: ProductModel[]; pages: number }>(
+    () => {
+      const endpoint = `${api}/products?_page=${this.page()}&_per_page=${this.limit()}`;
+      return endpoint;
+    },
+  );
+  readonly data = computed(() => this.result.value()?.data ?? []);
+  readonly totalPages = computed(() => this.result.value()?.pages ?? 1);
   readonly dataSignal = signal<ProductModel[]>([]);
 
   constructor() {
@@ -33,6 +36,8 @@ export default class Home {
   }
 
   onScroll() {
-    this.start.update((prev) => prev + this.limit());
+    if (this.page() < this.totalPages()) {
+      this.page.update((prev) => prev + 1);
+    }
   }
 }
