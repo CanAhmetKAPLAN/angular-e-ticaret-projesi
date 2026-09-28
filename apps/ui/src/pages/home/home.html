@@ -1,25 +1,26 @@
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="hero-content">
-            <h1>En Yeni Teknoloji Ürünleri</h1>
-            <p>Kaliteli ve uygun fiyatlı teknoloji ürünleri için doğru adres</p>
-        </div>
-    </section>
+<!-- Hero Section -->
+<section class="hero">
+    <div class="hero-content">
+        <h1>En Yeni Teknoloji Ürünleri</h1>
+        <p>Kaliteli ve uygun fiyatlı teknoloji ürünleri için doğru adres</p>
+    </div>
+</section>
 
-    <!-- Products Section -->
-    <section class="products">
-        <div class="container">
-            <h2 class="section-title">Ürünler</h2>
-            <div class="products-grid">
-                @for (val of dataSignal(); track val.id) {
-                    <!-- Product 1 -->
-                    <div class="product-card">
-                        <img [src]="val.imageUrl" [alt]="val.name">
-                        <h3>{{val.name}}</h3>
-                        <p class="price">{{val.price | trCurrency:'₺'}}</p>
-                        <button class="add-to-cart">Sepete Ekle</button>
-                    </div>
-                }
+<!-- Products Section -->
+<section class="products">
+    <div class="container">
+        <h2 class="section-title">Ürünler</h2>
+        <div class="products-grid">
+            @for(val of dataSignal(); track val.id){
+                <div class="product-card">
+                    <img [src]="val.imageUrl" [alt]="val.name">
+                    <h3>{{val.name}}</h3>
+                    <p class="price">{{val.price | trCurrency:'₺':false}}</p>
+                    <button class="add-to-cart">Sepete Ekle</button>
+                </div>
+            }
+
+            @if (hasMore()) {
                 <div
                     class="search-results"
                     infiniteScroll
@@ -27,6 +28,7 @@
                     [infiniteScrollThrottle]="50"
                     (scrolled)="onScroll()"
                 ></div>
-            </div>
+            }
         </div>
-    </section>
+    </div>
+</section>

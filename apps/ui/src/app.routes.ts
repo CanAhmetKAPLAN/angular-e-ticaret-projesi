@@ -9,6 +9,10 @@ export const appRoutes: Route[] = [
         path: '',
         loadComponent: () => import('./pages/home/home'),
       },
+      {
+        path: ':categoryKey',
+        loadComponent: () => import('./pages/home/home'),
+      },
     ],
   },
 ];
