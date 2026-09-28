@@ -3,17 +3,8 @@ import { Component, computed, inject, ViewEncapsulation } from '@angular/core';
 import Blank from '../../components/blank';
 import { FlexiGridModule } from 'flexi-grid';
 import { RouterLink } from '@angular/router';
-import { Toast } from '../../services/toast';
-
-export interface CategoryModel {
-  id: string;
-  name: string;
-}
-
-export const initialCategory: CategoryModel = {
-  id: '',
-  name: '',
-};
+import { Toast } from '@shared/services/toast';
+import { CategoryModel } from '@shared/models/category.model';
 
 @Component({
   encapsulation: ViewEncapsulation.None,

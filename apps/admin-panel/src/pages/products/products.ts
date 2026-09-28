@@ -9,28 +9,9 @@ import Blank from '../../components/blank';
 import { FlexiGridFilterDataModel, FlexiGridModule } from 'flexi-grid';
 import { httpResource, HttpClient } from '@angular/common/http';
 import { RouterLink } from '@angular/router';
-import { Toast } from '../../services/toast';
-import { CategoryModel } from '../categories/categories';
-
-export interface ProductModel {
-  id: string;
-  name: string;
-  imageUrl: string;
-  price: number;
-  stock: number;
-  categoryId: string;
-  categoryName: string;
-}
-
-export const initialProduct: ProductModel = {
-  id: '',
-  name: '',
-  imageUrl: '',
-  price: 0,
-  stock: 0,
-  categoryId: '123',
-  categoryName: 'Telefon',
-};
+import { Toast } from '@shared/services/toast';
+import { CategoryModel } from '@shared/models/category.model';
+import { ProductModel } from '@shared/models/product.model';
 
 @Component({
   encapsulation: ViewEncapsulation.None,

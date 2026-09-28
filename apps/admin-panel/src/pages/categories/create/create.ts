@@ -8,11 +8,11 @@ import {
 } from '@angular/core';
 import Blank from '../../../components/blank';
 import { FormsModule, NgForm } from '@angular/forms';
-import { CategoryModel, initialCategory } from '../categories';
+import { CategoryModel, initialCategory } from '@shared/models/category.model';
 import { FlexiGridModule } from 'flexi-grid';
 import { ActivatedRoute, Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
-import { Toast } from '../../../services/toast';
+import { Toast } from '@shared/services/toast';
 import { lastValueFrom } from 'rxjs';
 import { BreadcrumbModel } from '../../layouts/breadcrumb';
 

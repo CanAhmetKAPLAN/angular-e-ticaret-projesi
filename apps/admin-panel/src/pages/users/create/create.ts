@@ -9,9 +9,9 @@ import {
   ViewEncapsulation,
 } from '@angular/core';
 import { lastValueFrom } from 'rxjs';
-import { initialUser, UserModel } from '../users';
+import { initialUser, UserModel } from '@shared/models/user.model';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Toast } from '../../../services/toast';
+import { Toast } from '@shared/services/toast';
 import { FormsModule, NgForm } from '@angular/forms';
 import Blank from '../../../components/blank';
 import { BreadcrumbModel } from '../../layouts/breadcrumb';

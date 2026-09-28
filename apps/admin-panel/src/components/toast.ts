@@ -1,5 +1,5 @@
 import { Component, inject, ViewEncapsulation } from '@angular/core';
-import { Toast, ToastType } from '../services/toast';
+import { Toast, ToastType } from '@shared/services/toast';
 
 const VARIANT_CLASS: Record<ToastType, string> = {
   success: 'text-bg-success',

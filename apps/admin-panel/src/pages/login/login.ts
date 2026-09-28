@@ -1,9 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, inject, ViewEncapsulation } from '@angular/core';
 import { FormsModule, NgForm } from '@angular/forms';
-import { Toast } from '../../services/toast';
+import { Toast } from '@shared/services/toast';
 import { Router } from '@angular/router';
-import { UserModel } from '../users/users';
+import { UserModel } from '@shared/models/user.model';
 
 @Component({
   encapsulation: ViewEncapsulation.None,

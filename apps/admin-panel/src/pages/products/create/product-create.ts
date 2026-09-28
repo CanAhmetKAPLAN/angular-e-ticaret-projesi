@@ -12,11 +12,11 @@ import { ActivatedRoute, RouterLink } from '@angular/router';
 import { FormsModule, NgForm } from '@angular/forms';
 import { HttpClient, httpResource } from '@angular/common/http';
 import { Location } from '@angular/common';
-import { Toast } from '../../../services/toast';
+import { Toast } from '@shared/services/toast';
 import { NgxMaskDirective } from 'ngx-mask';
 import { lastValueFrom } from 'rxjs';
-import { initialProduct, ProductModel } from '../products';
-import { CategoryModel } from '../../categories/categories';
+import { initialProduct, ProductModel } from '@shared/models/product.model';
+import { CategoryModel } from '@shared/models/category.model';
 import { FlexiSelectModule } from 'flexi-select';
 import { BreadcrumbModel } from '../../layouts/breadcrumb';
 

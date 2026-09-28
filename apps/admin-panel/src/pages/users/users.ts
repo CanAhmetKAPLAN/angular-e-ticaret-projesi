@@ -3,28 +3,8 @@ import { Component, computed, inject, ViewEncapsulation } from '@angular/core';
 import Blank from '../../components/blank';
 import { FlexiGridModule } from 'flexi-grid';
 import { RouterLink } from '@angular/router';
-import { Toast } from '../../services/toast';
-
-export interface UserModel {
-  id?: string;
-  firstName: string;
-  lastName: string;
-  fullName: string;
-  userName: string;
-  email: string;
-  password: string;
-  isAdmin: boolean;
-}
-
-export const initialUser: UserModel = {
-  firstName: '',
-  lastName: '',
-  fullName: '',
-  userName: '',
-  email: '',
-  password: '',
-  isAdmin: false,
-};
+import { Toast } from '@shared/services/toast';
+import { UserModel } from '@shared/models/user.model';
 
 @Component({
   encapsulation: ViewEncapsulation.None,

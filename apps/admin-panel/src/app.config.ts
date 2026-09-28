@@ -10,8 +10,8 @@ import { registerLocaleData } from '@angular/common';
 import localeTr from '@angular/common/locales/tr';
 import { provideHttpClient, withInterceptors } from '@angular/common/http';
 import { provideNgxMask } from 'ngx-mask';
-import { httpInterceptor } from './interceptors/http-interceptors';
-import { errorInterceptor } from './interceptors/error-interceptor';
+import { httpInterceptor } from '@shared/interceptors/http-interceptors';
+import { errorInterceptor } from '@shared/interceptors/error-interceptor';
 
 registerLocaleData(localeTr);
 
