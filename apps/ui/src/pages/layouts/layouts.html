@@ -9,7 +9,7 @@
             <ul class="nav-menu">
                 @for (val of data(); track val.id) {
                     <li>
-                    <a [routerLink]="['/',val.id]" class="nav-link">
+                    <a [routerLink]="['/',val.slug]" class="nav-link">
                         {{val.name}}
                     </a></li>
                 }

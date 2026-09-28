@@ -11,9 +11,12 @@ import {
   ViewEncapsulation,
 } from '@angular/core';
 import { ProductModel } from '@shared/models/product.model';
+import { CategoryModel } from '@shared/models/category.model';
+import { slugify } from '@shared/utils/slug';
 import { TrCurrencyPipe } from 'tr-currency';
 import { InfiniteScrollDirective } from 'ngx-infinite-scroll';
 import { ActivatedRoute } from '@angular/router';
+import { api } from '../../constants';
 
 @Component({
   imports: [TrCurrencyPipe, InfiniteScrollDirective],
@@ -27,10 +30,24 @@ export default class Home {
   readonly perPage = 6;
   readonly page = signal<number>(1);
   readonly hasMore = signal<boolean>(true);
+
+  readonly categoriesResult = httpResource<CategoryModel[]>(() => `${api}/categories`);
+  readonly categoryId = computed(() => {
+    const key = this.categoryKey();
+    if (!key) {
+      return undefined;
+    }
+    return this.categoriesResult.value()?.find((category) => slugify(category.name) === key)?.id;
+  });
+
   readonly result = httpResource<{ data: ProductModel[]; next: number | null }>(() => {
+    if (this.categoryKey() && !this.categoryId()) {
+      return undefined;
+    }
+
     let endpoint = 'api/products?';
-    if (this.categoryKey()) {
-      endpoint += `categoryId=${this.categoryKey()}&`;
+    if (this.categoryId()) {
+      endpoint += `categoryId=${this.categoryId()}&`;
     }
     endpoint += `_page=${this.page()}&_per_page=${this.perPage}`;
 
