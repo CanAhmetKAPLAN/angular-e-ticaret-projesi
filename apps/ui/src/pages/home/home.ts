@@ -28,32 +28,40 @@ export default class Home {
   readonly categoryKey = signal<string | undefined>(undefined);
   readonly categoryKeyPrev = this.computedPrevious(this.categoryKey);
   readonly perPage = 6;
+  readonly placeholders = Array.from({ length: this.perPage });
   readonly page = signal<number>(1);
   readonly hasMore = signal<boolean>(true);
 
-  readonly categoriesResult = httpResource<CategoryModel[]>(() => `${api}/categories`);
+  readonly categoriesResult = httpResource<CategoryModel[]>(
+    () => `${api}/categories`,
+  );
   readonly categoryId = computed(() => {
     const key = this.categoryKey();
     if (!key) {
       return undefined;
     }
-    return this.categoriesResult.value()?.find((category) => slugify(category.name) === key)?.id;
+    return this.categoriesResult
+      .value()
+      ?.find((category) => slugify(category.name) === key)?.id;
   });
 
-  readonly result = httpResource<{ data: ProductModel[]; next: number | null }>(() => {
-    if (this.categoryKey() && !this.categoryId()) {
-      return undefined;
-    }
+  readonly result = httpResource<{ data: ProductModel[]; next: number | null }>(
+    () => {
+      if (this.categoryKey() && !this.categoryId()) {
+        return undefined;
+      }
 
-    let endpoint = 'api/products?';
-    if (this.categoryId()) {
-      endpoint += `categoryId=${this.categoryId()}&`;
-    }
-    endpoint += `_page=${this.page()}&_per_page=${this.perPage}`;
+      let endpoint = 'api/products?';
+      if (this.categoryId()) {
+        endpoint += `categoryId=${this.categoryId()}&`;
+      }
+      endpoint += `_page=${this.page()}&_per_page=${this.perPage}`;
 
-    return endpoint;
-  });
+      return endpoint;
+    },
+  );
   readonly data = computed(() => this.result.value()?.data ?? []);
+  readonly loading = computed(() => this.result.isLoading());
   readonly dataSignal = signal<ProductModel[]>([]);
 
   readonly #activated = inject(ActivatedRoute);

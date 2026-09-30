@@ -35,6 +35,51 @@
       "stock": "6",
       "categoryId": "ZPqw73Z_miU",
       "categoryName": "Mutfak Ev Aletleri"
+    },
+    {
+      "id": "t04TiZ2SOxQ",
+      "name": "Razer Cobra - Chroma RGB'ye sahip hafif kablolu oyun faresi (tüy hafifliğinde 57g, 3-Nesil optik fare anahtarları, gövde altı aydınlatmalı Chroma aydınlatma, hassas sensör ayarları) Siyah",
+      "imageUrl": "https://m.media-amazon.com/images/I/61ucyZALiBL._AC_SX679_.jpg",
+      "price": 1359,
+      "stock": "80",
+      "categoryId": "9VJEGHpUtY8",
+      "categoryName": "Bilgisayar Aksesuarları"
+    },
+    {
+      "id": "vDs9hwdySeo",
+      "name": "Logitech MX Keys S Kablosuz Klavye, Düşük Profil, Akıcı Hassas Sessiz Yazma, Programlanabilir Tuşlar, Arkadan Aydınlatma, Bluetooth, USB C Şarj Edilebilir, Siyah",
+      "imageUrl": "https://m.media-amazon.com/images/I/71-jUnrhPWL._AC_SX679_.jpg",
+      "price": 5800,
+      "stock": "35",
+      "categoryId": "9VJEGHpUtY8",
+      "categoryName": "Bilgisayar Aksesuarları"
+    },
+    {
+      "id": "nZpvyTGikoU",
+      "name": "Greenote Halı/Koltuk Yıkama Makinesi ve Spot Temizleyici – Sofa, Halı ve Araç İçin Uygun, Güçlü Islak/Kuru Vakum, 1.8 L Su Tankı, Tekerlekli Tasarım",
+      "imageUrl": "https://m.media-amazon.com/images/I/61pHd30LJML._AC_SY879_.jpg",
+      "price": 4999,
+      "stock": "4",
+      "categoryId": "yavdjAD_6Hw",
+      "categoryName": "Temizlik Aletleri"
+    },
+    {
+      "id": "rRGaA375964",
+      "name": "Robeve Auhma Güçlü Vakumlu Oto Süpürgesi Elektrik Süpürgesi Şarjlı El Süpürgesi Çok Fonksiyonlu 3 Kademeli 20000PA Güçlü Oto Süpürge Araç Süpürge Araç Süpürgesi Dijital Göstergeli (Mor)",
+      "imageUrl": "https://m.media-amazon.com/images/I/61SDyoNZl-L._AC_SX679_.jpg",
+      "price": 1099,
+      "stock": "95",
+      "categoryId": "yavdjAD_6Hw",
+      "categoryName": "Temizlik Aletleri"
+    },
+    {
+      "id": "ZIUEfpWbW8w",
+      "name": "Xiaomi 17T Pro 5G Akıllı Telefon 12+256GB,Koyu Mor,7000mAh batarya",
+      "imageUrl": "https://m.media-amazon.com/images/I/51t1KZgNFqL._AC_SX679_.jpg",
+      "price": 55999,
+      "stock": "25",
+      "categoryId": "zgA5C0O8usg",
+      "categoryName": "Telefon"
     }
   ],
   "categories": [
@@ -45,6 +90,14 @@
     {
       "id": "ZPqw73Z_miU",
       "name": "Mutfak Ev Aletleri"
+    },
+    {
+      "id": "9VJEGHpUtY8",
+      "name": "Bilgisayar Aksesuarları"
+    },
+    {
+      "id": "yavdjAD_6Hw",
+      "name": "Temizlik Aletleri"
     }
   ],
   "users": [

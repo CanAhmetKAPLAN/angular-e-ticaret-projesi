@@ -11,6 +11,16 @@
     <div class="container">
         <h2 class="section-title">Ürünler</h2>
         <div class="products-grid">
+            @if (loading()) {
+                @for (item of placeholders; track $index) {
+                    <div class="product-card placeholder-glow">
+                        <div class="placeholder" style="width: 100%; height: 200px;"></div>
+                        <h3 class="placeholder">Ürün Adı</h3>
+                        <p class="placeholder">999.99 ₺</p>
+                        <button class="placeholder" disabled>Sepete Ekle</button>
+                    </div>
+                }
+            } @else {
             @for(val of dataSignal(); track val.id){
                 <div class="product-card">
                     <img [src]="val.imageUrl" [alt]="val.name">
@@ -28,6 +38,7 @@
                     [infiniteScrollThrottle]="50"
                     (scrolled)="onScroll()"
                 ></div>
+            }
             }
         </div>
     </div>
