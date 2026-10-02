@@ -19,17 +19,17 @@
                             <div class="item-details">
                                 <h3>{{val.productName}}</h3>
                                 <div class="item-actions">
-                                    <button class="remove-btn"><i class="fas fa-trash"></i> Kaldır</button>
+                                    <button class="remove-btn" (click)="remove(val)"><i class="fas fa-trash"></i> Kaldır</button>
                                     <button class="save-btn"><i class="fas fa-heart"></i> Favorilere Ekle</button>
                                 </div>
                             </div>
                             <div class="quantity-controls">
-                                <button class="qty-btn minus">-</button>
+                                <button class="qty-btn minus" (click)="changeQuantity(val, -1)" [disabled]="val.quantity <= 1">-</button>
                                 <span class="quantity">{{val.quantity}}</span>
-                                <button class="qty-btn plus">+</button>
+                                <button class="qty-btn plus" (click)="changeQuantity(val, 1)">+</button>
                             </div>
                             <div class="item-price">
-                                <span class="price">{{val.productPrice | trCurrency:'₺': false}}</span>
+                                <span class="price">{{val.productPrice * val.quantity | trCurrency:'₺': false}}</span>
                             </div>
                         </div>
                     }
@@ -42,7 +42,7 @@
                         
                         <div class="summary-row">
                             <span>Ara Toplam:</span>
-                            <span id="subtotal">91.996 ₺</span>
+                            <span id="subtotal">{{subtotal() | trCurrency:'₺': false}}</span>
                         </div>
                         
                         <div class="summary-row">
@@ -52,14 +52,14 @@
                         
                         <div class="summary-row">
                             <span>KDV (18%):</span>
-                            <span id="tax">16.559 ₺</span>
+                            <span id="tax">{{tax() | trCurrency:'₺': false}}</span>
                         </div>
                         
                         <hr>
                         
                         <div class="summary-row total">
                             <span>Toplam:</span>
-                            <span id="total">108.555 ₺</span>
+                            <span id="total">{{total() | trCurrency:'₺': false}}</span>
                         </div>
                         
                         <div class="promo-code">

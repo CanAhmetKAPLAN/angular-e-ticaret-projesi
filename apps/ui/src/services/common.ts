@@ -27,7 +27,9 @@ export class Common {
 
     this.#http
       .get<BasketModel[]>(`api/baskets?userId=${userId}`)
-      .subscribe((res) => this.basketCount.set(res.length));
+      .subscribe((res) =>
+        this.basketCount.set(res.reduce((sum, b) => sum + b.quantity, 0))
+      );
   }
 
   clearUser() {
