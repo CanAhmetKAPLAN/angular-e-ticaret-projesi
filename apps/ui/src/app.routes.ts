@@ -21,6 +21,12 @@ export const appRoutes: Route[] = [
         title: 'e-Ticaret | Sepetim',
       },
       {
+        path: 'payment',
+        loadComponent: () => import('./pages/payment/payment'),
+        title: 'e-Ticaret | Ödeme',
+        canActivate: [authGuard],
+      },
+      {
         path: ':categoryKey',
         loadComponent: () => import('./pages/home/home'),
         title: 'e-Ticaret | Ana Sayfa',

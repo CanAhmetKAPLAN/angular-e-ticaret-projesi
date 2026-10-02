@@ -1,5 +1,6 @@
 import { HttpClient, httpResource } from '@angular/common/http';
 import { Component, computed, inject, ViewEncapsulation } from '@angular/core';
+import { RouterLink } from '@angular/router';
 import { Common } from '../../services/common';
 import { BasketModel } from '@shared/models/basket.model';
 import { TrCurrencyPipe } from 'tr-currency';
@@ -7,7 +8,7 @@ import { Toast } from '@shared/services/toast';
 
 @Component({
   encapsulation: ViewEncapsulation.None,
-  imports: [TrCurrencyPipe],
+  imports: [TrCurrencyPipe, RouterLink],
   templateUrl: './baskets.html',
 })
 export default class Baskets {
@@ -18,7 +19,10 @@ export default class Baskets {
   readonly data = computed(() => this.result.value() ?? []);
   // Ürün fiyatları KDV dahil kabul ediliyor
   readonly total = computed(() =>
-    this.data().reduce((sum, item) => sum + item.productPrice * item.quantity, 0)
+    this.data().reduce(
+      (sum, item) => sum + item.productPrice * item.quantity,
+      0,
+    ),
   );
   readonly subtotal = computed(() => this.total() / 1.18);
   readonly tax = computed(() => this.total() - this.subtotal());
@@ -37,7 +41,7 @@ export default class Baskets {
       .patch<BasketModel>(`api/baskets/${item.id}`, { quantity })
       .subscribe(() => {
         this.result.update((prev) =>
-          prev?.map((b) => (b.id === item.id ? { ...b, quantity } : b))
+          prev?.map((b) => (b.id === item.id ? { ...b, quantity } : b)),
         );
         this.#common.basketCount.update((prev) => prev + change);
       });
