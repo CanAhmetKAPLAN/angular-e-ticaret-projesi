@@ -21,18 +21,18 @@
 <div class="tab-content active" id="register">
     <form #form="ngForm" class="auth-form" (ngSubmit)="signIn(form)">
         <div class="form-group">
-            <label for="registerEmail">Kullanıcı Adı</label>
+            <label for="loginUserName">Kullanıcı Adı</label>
             <div class="input-group">
                 <i class="fas fa-envelope"></i>
-                <input type="text" ngModel name="userName" required placeholder="KullaniciAdi">
+                <input type="text" id="loginUserName" ngModel name="userName" required placeholder="KullaniciAdi">
             </div>
         </div>
 
         <div class="form-group">
-            <label for="registerPassword">Şifre</label>
+            <label for="loginPassword">Şifre</label>
             <div class="input-group">
                 <i class="fas fa-lock"></i>
-                <input type="password" ngModel name="password" required placeholder="Şifrenizi girin">
+                <input type="password" id="loginPassword" ngModel name="password" required placeholder="Şifrenizi girin">
             </div>
         </div>
 

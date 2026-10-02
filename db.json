@@ -110,6 +110,66 @@
       "password": "can123",
       "isAdmin": true,
       "id": "burGWSEveac"
+    },
+    {
+      "firstName": "Can Ahmet",
+      "lastName": "KAPLAN",
+      "fullName": "",
+      "userName": "cankaplan",
+      "email": "cakaplan06@gmail.com",
+      "password": "123",
+      "isAdmin": false,
+      "id": "1bzdcuSzfpI"
+    },
+    {
+      "firstName": "Can Ahmet",
+      "lastName": "KAPLAN",
+      "fullName": "",
+      "userName": "cankaplan",
+      "email": "cakaplan06@gmail.com",
+      "password": "123",
+      "isAdmin": false,
+      "id": "_L71ihzeJk8"
+    },
+    {
+      "firstName": "Can",
+      "lastName": "KAPLAN",
+      "fullName": "",
+      "userName": "cankaplan",
+      "email": "cakaplan06asd@gmail.com",
+      "password": "123",
+      "isAdmin": false,
+      "id": "FM9sz654f6U"
+    }
+  ],
+  "baskets": [
+    {
+      "productID": "kKt86MRi8uE",
+      "productName": "Philips Airfryer L, Yağsız Sıcak Hava Fritözü, 4,1 L, 1400 W, 7 Programlı Dijital Ekran",
+      "price": 8350,
+      "quantity": 1,
+      "id": "iuOCS6K7H-I"
+    },
+    {
+      "productID": "1",
+      "productName": "Iphone 18",
+      "price": 137999,
+      "quantity": 1,
+      "id": "BRceW-SW9J0"
+    },
+    {
+      "productID": "vDs9hwdySeo",
+      "productName": "Logitech MX Keys S Kablosuz Klavye, Düşük Profil, Akıcı Hassas Sessiz Yazma, Programlanabilir Tuşlar, Arkadan Aydınlatma, Bluetooth, USB C Şarj Edilebilir, Siyah",
+      "price": 5800,
+      "quantity": 1,
+      "id": "OcN0lGLNNu0"
+    },
+    {
+      "productID": "nZpvyTGikoU",
+      "productName": "Greenote Halı/Koltuk Yıkama Makinesi ve Spot Temizleyici – Sofa, Halı ve Araç İçin Uygun, Güçlü Islak/Kuru Vakum, 1.8 L Su Tankı, Tekerlekli Tasarım",
+      "price": 4999,
+      "quantity": 1,
+      "id": "nJh4riBqsx8"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"

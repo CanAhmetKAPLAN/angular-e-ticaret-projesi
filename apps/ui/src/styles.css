@@ -3099,6 +3099,19 @@ hr {
     animation: placeholder-glow 2s ease-in-out infinite;
 }
 
+.basket-count{
+    position: absolute; 
+    bottom: 0; 
+    right: 0;
+    border-radius: 50px; 
+    background-color: red; 
+    color: white;
+    font-size: 10px; 
+    padding: 0.5px;
+    min-width: 15px;
+    text-align: center;
+}
+
 @keyframes placeholder-glow {
     50% {
         opacity: 0.2;

@@ -1,4 +1,4 @@
-import { httpResource } from '@angular/common/http';
+import { HttpClient, httpResource } from '@angular/common/http';
 import {
   ChangeDetectionStrategy,
   Component,
@@ -12,11 +12,14 @@ import {
 } from '@angular/core';
 import { ProductModel } from '@shared/models/product.model';
 import { CategoryModel } from '@shared/models/category.model';
+import { BasketModel } from '@shared/models/basket.model';
 import { slugify } from '@shared/utils/slug';
 import { TrCurrencyPipe } from 'tr-currency';
 import { InfiniteScrollDirective } from 'ngx-infinite-scroll';
 import { ActivatedRoute } from '@angular/router';
 import { api } from '../../constants';
+import { Toast } from '@shared/services/toast';
+import { Common } from '../../services/common';
 
 @Component({
   imports: [TrCurrencyPipe, InfiniteScrollDirective],
@@ -65,6 +68,9 @@ export default class Home {
   readonly dataSignal = signal<ProductModel[]>([]);
 
   readonly #activated = inject(ActivatedRoute);
+  readonly #http = inject(HttpClient);
+  readonly #toast = inject(Toast);
+  readonly #common = inject(Common);
 
   constructor() {
     this.#activated.params.subscribe((res) => {
@@ -100,6 +106,20 @@ export default class Home {
       const result = previous;
       previous = current;
       return result;
+    });
+  }
+
+  addBasket(data: ProductModel) {
+    const basket: BasketModel = {
+      productID: data.id,
+      productName: data.name,
+      price: data.price,
+      quantity: 1,
+    };
+
+    this.#http.post('api/baskets', basket).subscribe((res) => {
+      this.#toast.show('Başarılı', 'Ürün sepete başarıyla eklendi');
+      this.#common.basketCount.update((prev) => prev + 1);
     });
   }
 }

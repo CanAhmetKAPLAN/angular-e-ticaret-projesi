@@ -16,8 +16,48 @@
             </ul>
             <div class="nav-icons">
                 <i class="fas fa-search"></i>
-                <i class="fas fa-shopping-cart"></i>
-                <i class="fas fa-user"></i>
+                <div style="position: relative;">
+                    <i class="fas fa-shopping-cart"></i>
+                    @if (basketCount() > 0) {
+                        <div class="basket-count">{{basketCount()}}</div>
+                    }
+                </div>
+                @if (isLoggedIn()) {
+                    <div class="user-dropdown">
+                        <i
+                            class="fas fa-user dropdown-toggle"
+                            [class.active]="dropdownOpen()"
+                            title="Hesabım"
+                            role="button"
+                            tabindex="0"
+                            (click)="toggleDropdown()"
+                            (keydown.enter)="toggleDropdown()"
+                        ></i>
+                        <div class="dropdown-menu" [class.show]="dropdownOpen()">
+                            <div class="dropdown-header">
+                                <div class="user-avatar">
+                                    <i class="fas fa-user-circle"></i>
+                                </div>
+                                <div class="user-info">
+                                    <span class="user-name">{{ currentUser()?.fullName }}</span>
+                                    <span class="user-email">{{ currentUser()?.email }}</span>
+                                </div>
+                            </div>
+                            <a
+                                class="dropdown-item logout"
+                                role="button"
+                                tabindex="0"
+                                (click)="logOut()"
+                                (keydown.enter)="logOut()"
+                            >
+                                <i class="fas fa-sign-out-alt"></i>
+                                <span>Çıkış Yap</span>
+                            </a>
+                        </div>
+                    </div>
+                } @else {
+                    <i class="fas fa-user" title="Giriş yap" routerLink="/auth/login"></i>
+                }
             </div>
         </div>
     </nav>

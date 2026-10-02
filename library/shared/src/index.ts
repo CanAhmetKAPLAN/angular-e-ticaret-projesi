@@ -6,3 +6,4 @@ export * from './services/error';
 export * from './interceptors/http-interceptors';
 export * from './interceptors/error-interceptor';
 export * from './utils/slug';
+export { default as AppToast } from './components/toast';
