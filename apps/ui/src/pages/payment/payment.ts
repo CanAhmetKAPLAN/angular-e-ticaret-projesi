@@ -14,10 +14,26 @@ import { BasketModel } from '@shared/models/basket.model';
 import { TrCurrencyPipe } from 'tr-currency';
 import { OrderModel, initialOrder } from '@shared/models/order.model';
 import { FormsModule, NgForm } from '@angular/forms';
+import { FlexiSelectModule } from 'flexi-select';
+
+interface DistrictModel {
+  ilce_adi: string;
+}
+
+interface CityModel {
+  il_adi: string;
+  ilceler: DistrictModel[];
+}
 
 @Component({
   encapsulation: ViewEncapsulation.None,
-  imports: [RouterLink, TrCurrencyPipe, FormsModule, DatePipe],
+  imports: [
+    RouterLink,
+    TrCurrencyPipe,
+    FormsModule,
+    DatePipe,
+    FlexiSelectModule,
+  ],
   templateUrl: './payment.html',
 })
 export default class Payment {
@@ -32,6 +48,13 @@ export default class Payment {
   readonly subtotal = computed(() => this.total() / (1 + this.taxRate));
   readonly tax = computed(() => this.total() - this.subtotal());
 
+  readonly citiesResult = httpResource<CityModel[]>(() => '/il-ilce.json');
+  readonly cities = computed(() => this.citiesResult.value() ?? []);
+  readonly districts = computed(
+    () =>
+      this.cities().find((c) => c.il_adi === this.data().city)?.ilceler ?? [],
+  );
+
   readonly showSuccessPart = signal<boolean>(false);
   readonly data = signal<OrderModel>({ ...initialOrder, baskets: [] });
 
@@ -44,6 +67,11 @@ export default class Payment {
 
   readonly #common = inject(Common);
   readonly #http = inject(HttpClient);
+
+  setCity(city: string) {
+    // İl değişince seçili ilçe sıfırlanır
+    this.data.update((prev) => ({ ...prev, city, district: '' }));
+  }
 
   pay(form: NgForm) {
     if (!form.valid || this.baskets().length === 0) return;
