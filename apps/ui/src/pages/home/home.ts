@@ -126,8 +126,9 @@ export default class Home {
       userId,
       productID: data.id,
       productName: data.name,
-      price: data.price,
+      productPrice: data.price,
       quantity: 1,
+      productImageUrl: data.imageUrl,
     };
 
     this.#http.post('api/baskets', basket).subscribe((res) => {

@@ -147,17 +147,10 @@
       "userId": "burGWSEveac",
       "productID": "kKt86MRi8uE",
       "productName": "Philips Airfryer L, Yağsız Sıcak Hava Fritözü, 4,1 L, 1400 W, 7 Programlı Dijital Ekran",
-      "price": 8350,
+      "productPrice": 8350,
       "quantity": 1,
-      "id": "l3HIFRf_8c0"
-    },
-    {
-      "userId": "burGWSEveac",
-      "productID": "4rOM1lEsT58",
-      "productName": "Samsung Galaxy S26",
-      "price": 67499,
-      "quantity": 1,
-      "id": "UTflqBqdpq4"
+      "productImageUrl": "https://cdn.dsmcdn.com/mnresize/420/620/ty452/product/media/images/20220610/9/123628812/497569361/1/1_org_zoom.jpg",
+      "id": "z7D7uV2GLwA"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"
