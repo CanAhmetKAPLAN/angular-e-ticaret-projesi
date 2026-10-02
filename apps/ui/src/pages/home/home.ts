@@ -16,7 +16,7 @@ import { BasketModel } from '@shared/models/basket.model';
 import { slugify } from '@shared/utils/slug';
 import { TrCurrencyPipe } from 'tr-currency';
 import { InfiniteScrollDirective } from 'ngx-infinite-scroll';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { api } from '../../constants';
 import { Toast } from '@shared/services/toast';
 import { Common } from '../../services/common';
@@ -71,6 +71,7 @@ export default class Home {
   readonly #http = inject(HttpClient);
   readonly #toast = inject(Toast);
   readonly #common = inject(Common);
+  readonly #router = inject(Router);
 
   constructor() {
     this.#activated.params.subscribe((res) => {
@@ -110,7 +111,19 @@ export default class Home {
   }
 
   addBasket(data: ProductModel) {
+    const userId = this.#common.user()?.id;
+    if (!userId) {
+      this.#toast.show(
+        'Uyarı',
+        'Sepete eklemek için giriş yapmalısınız',
+        'warning',
+      );
+      this.#router.navigateByUrl('/auth/login');
+      return;
+    }
+
     const basket: BasketModel = {
+      userId,
       productID: data.id,
       productName: data.name,
       price: data.price,

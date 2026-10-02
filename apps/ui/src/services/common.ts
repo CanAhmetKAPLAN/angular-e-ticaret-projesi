@@ -11,16 +11,27 @@ export class Common {
   readonly #http = inject(HttpClient);
 
   constructor() {
-    this.getBasketCount();
     const response: string | null = localStorage.getItem('response');
     if (response) {
       this.user.set(JSON.parse(response));
     }
+    this.getBasketCount();
   }
 
   getBasketCount() {
+    const userId = this.user()?.id;
+    if (!userId) {
+      this.basketCount.set(0);
+      return;
+    }
+
     this.#http
-      .get<BasketModel[]>('api/baskets')
+      .get<BasketModel[]>(`api/baskets?userId=${userId}`)
       .subscribe((res) => this.basketCount.set(res.length));
+  }
+
+  clearUser() {
+    this.user.set(undefined);
+    this.basketCount.set(0);
   }
 }

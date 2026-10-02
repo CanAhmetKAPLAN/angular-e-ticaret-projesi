@@ -72,6 +72,7 @@ export default class Layouts {
 
   logOut() {
     localStorage.clear();
+    this.#common.clearUser();
     this.#router.navigateByUrl('/auth/login');
   }
 }

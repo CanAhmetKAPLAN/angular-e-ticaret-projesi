@@ -8,10 +8,12 @@ export const appRoutes: Route[] = [
       {
         path: '',
         loadComponent: () => import('./pages/home/home'),
+        title: 'e-Ticaret | Ana Sayfa',
       },
       {
         path: ':categoryKey',
         loadComponent: () => import('./pages/home/home'),
+        title: 'e-Ticaret | Ana Sayfa',
       },
       {
         path: 'auth',

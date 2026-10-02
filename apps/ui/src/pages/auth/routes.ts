@@ -8,10 +8,12 @@ const routes: Routes = [
       {
         path: 'register',
         loadComponent: () => import('./register/register'),
+        title: 'e-Ticaret | Kayıt Ol',
       },
       {
         path: 'login',
         loadComponent: () => import('./login/login'),
+        title: 'e-Ticaret | Giriş Yap',
       },
     ],
   },

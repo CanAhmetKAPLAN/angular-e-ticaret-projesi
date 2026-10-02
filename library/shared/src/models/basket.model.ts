@@ -1,5 +1,6 @@
 export interface BasketModel {
   id?: string;
+  userId: string;
   productID: string;
   productName: string;
   price: number;
@@ -7,6 +8,7 @@ export interface BasketModel {
 }
 
 export const initialBasket: BasketModel = {
+  userId: '',
   productID: '',
   productName: '',
   price: 0,
