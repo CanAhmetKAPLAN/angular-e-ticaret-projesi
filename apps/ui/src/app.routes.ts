@@ -27,6 +27,12 @@ export const appRoutes: Route[] = [
         canActivate: [authGuard],
       },
       {
+        path: 'orders',
+        loadComponent: () => import('./pages/orders/orders'),
+        title: 'e-Ticaret | Siparişlerim',
+        canActivate: [authGuard],
+      },
+      {
         path: ':categoryKey',
         loadComponent: () => import('./pages/home/home'),
         title: 'e-Ticaret | Ana Sayfa',

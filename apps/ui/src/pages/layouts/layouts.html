@@ -44,6 +44,10 @@
                                     <span class="user-email">{{ currentUser()?.email }}</span>
                                 </div>
                             </div>
+                            <a class="dropdown-item" routerLink="/orders" (click)="dropdownOpen.set(false)">
+                                <i class="fas fa-box"></i>
+                                <span>Siparişlerim</span>
+                            </a>
                             <a
                                 class="dropdown-item logout"
                                 role="button"

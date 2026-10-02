@@ -1,0 +1,143 @@
+<section class="orders-section">
+    <div class="container">
+        <!-- Page Header -->
+        <div class="page-header">
+            <div class="header-content">
+                <h1><i class="fas fa-box"></i> Siparişlerim</h1>
+                <p>Tüm siparişlerinizi buradan takip edebilirsiniz</p>
+            </div>
+            <div class="header-stats">
+                <div class="stat-item">
+                    <span class="stat-number">{{totalCount()}}</span>
+                    <span class="stat-label">Toplam Sipariş</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">{{waitingCount()}}</span>
+                    <span class="stat-label">Beklemede</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">{{completedCount()}}</span>
+                    <span class="stat-label">Tamamlanan</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Filter and Search -->
+        <div class="orders-controls">
+            <div class="search-box">
+                <i class="fas fa-search"></i>
+                <input type="text" placeholder="Sipariş no, ürün adı ara..." [(ngModel)]="search">
+            </div>
+            <div class="filter-controls">
+                <select class="filter-select" id="statusFilter" [(ngModel)]="statusFilter">
+                    <option value="">Tüm Durumlar</option>
+                    <option value="Hazırlanıyor">Hazırlanıyor</option>
+                    <option value="Kargoda">Kargoda</option>
+                    <option value="Teslim Edildi">Teslim Edildi</option>
+                    <option value="İptal Edildi">İptal Edildi</option>
+                </select>
+                <select class="filter-select" id="timeFilter" [(ngModel)]="timeFilter">
+                    <option value="">Tüm Zamanlar</option>
+                    <option value="week">Son 1 Hafta</option>
+                    <option value="month">Son 1 Ay</option>
+                    <option value="3months">Son 3 Ay</option>
+                    <option value="year">Son 1 Yıl</option>
+                </select>
+                <button class="filter-btn" (click)="resetFilters()">
+                    <i class="fas fa-filter"></i>
+                    Temizle
+                </button>
+            </div>
+        </div>
+
+        <!-- Orders List -->
+        <div class="orders-list">
+            @if (result.isLoading() && !result.hasValue()) {
+                <p style="text-align: center;">Siparişler yükleniyor...</p>
+            }
+
+            @for (val of data(); track val.id) {
+                @let style = statusStyle(val.status);
+                <div class="order-card" [attr.data-status]="style.css">
+                    <div class="order-header">
+                        <div class="order-info">
+                            <h3>Sipariş #{{val.orderNumber}}</h3>
+                            <span class="order-date">{{formatDate(val.date)}}</span>
+                        </div>
+                        <div class="order-status">
+                            <span class="status-badge" [class]="style.css">
+                                <i class="fas" [class]="style.icon"></i>
+                                {{val.status}}
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="order-items">
+                        @for (item of val.baskets; track item.id) {
+                            <div class="order-item">
+                                <img [src]="item.productImageUrl" [alt]="item.productName">
+                                <div class="item-details">
+                                    <h4>{{item.productName}}</h4>
+                                    <span class="quantity">Adet: {{item.quantity}}</span>
+                                </div>
+                                <span class="item-price">{{item.productPrice * item.quantity | trCurrency:'₺': false}}</span>
+                            </div>
+                        }
+                    </div>
+
+                    <div class="order-footer">
+                        <div class="order-total">
+                            <span>Toplam: <strong>{{orderTotal(val) | trCurrency:'₺': false}}</strong></span>
+                        </div>
+                        <div class="order-actions">
+                            <button class="btn-secondary">
+                                <i class="fas fa-eye"></i>
+                                Detaylar
+                            </button>
+                            @switch (val.status) {
+                                @case ('Teslim Edildi') {
+                                    <button class="btn-success">
+                                        <i class="fas fa-star"></i>
+                                        Değerlendir
+                                    </button>
+                                }
+                                @case ('İptal Edildi') {
+                                    <button class="btn-primary">
+                                        <i class="fas fa-redo"></i>
+                                        Tekrar Sipariş
+                                    </button>
+                                }
+                                @default {
+                                    <button class="btn-primary">
+                                        <i class="fas fa-truck"></i>
+                                        Kargo Takip
+                                    </button>
+                                }
+                            }
+                        </div>
+                    </div>
+                </div>
+            } @empty {
+                @if (!result.isLoading()) {
+                    <p style="text-align: center;">
+                        @if (totalCount() === 0) {
+                            Henüz siparişiniz bulunmuyor.
+                        } @else {
+                            Filtrelere uygun sipariş bulunamadı.
+                        }
+                    </p>
+                }
+            }
+
+            <!-- Load More Button -->
+            @if (hasMore()) {
+                <div class="load-more">
+                    <button class="load-more-btn" (click)="showMore()">
+                        <i class="fas fa-plus"></i>
+                        Daha Fazla Sipariş Yükle
+                    </button>
+                </div>
+            }
+        </div>
+    </div>
+</section>
