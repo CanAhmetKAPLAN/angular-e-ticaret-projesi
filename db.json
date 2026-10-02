@@ -142,7 +142,17 @@
       "id": "FM9sz654f6U"
     }
   ],
-  "baskets": [],
+  "baskets": [
+    {
+      "userId": "burGWSEveac",
+      "productID": "kKt86MRi8uE",
+      "productName": "Philips Airfryer L, Yağsız Sıcak Hava Fritözü, 4,1 L, 1400 W, 7 Programlı Dijital Ekran",
+      "productPrice": 8350,
+      "quantity": 1,
+      "productImageUrl": "https://cdn.dsmcdn.com/mnresize/420/620/ty452/product/media/images/20220610/9/123628812/497569361/1/1_org_zoom.jpg",
+      "id": "TDZKRqMujDA"
+    }
+  ],
   "orders": [
     {
       "userId": "burGWSEveac",
@@ -158,7 +168,7 @@
       "expiresData": "10/31",
       "cvv": "452",
       "installmentOptions": "1",
-      "status": "Hazırlanıyor",
+      "status": "Kargoda",
       "baskets": [
         {
           "userId": "burGWSEveac",
@@ -186,7 +196,7 @@
       "expiresData": "12/35",
       "cvv": "246",
       "installmentOptions": "1",
-      "status": "Hazırlanıyor",
+      "status": "Teslim Edildi",
       "baskets": [
         {
           "userId": "burGWSEveac",
